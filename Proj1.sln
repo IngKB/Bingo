@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bingo.Domain.Test", "Test\Bingo.Domain.Test.csproj", "{952AA750-1DB0-490E-BA03-B6D312EAB148}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bingo.Domain", "Bingo.Domaain\Bingo.Domain.csproj", "{4E8BE1A5-5E71-4646-A4BA-80B0BA72C448}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{952AA750-1DB0-490E-BA03-B6D312EAB148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{952AA750-1DB0-490E-BA03-B6D312EAB148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{952AA750-1DB0-490E-BA03-B6D312EAB148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{952AA750-1DB0-490E-BA03-B6D312EAB148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E8BE1A5-5E71-4646-A4BA-80B0BA72C448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E8BE1A5-5E71-4646-A4BA-80B0BA72C448}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E8BE1A5-5E71-4646-A4BA-80B0BA72C448}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E8BE1A5-5E71-4646-A4BA-80B0BA72C448}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE060931-75A8-4D97-BCD1-CEB070E0817C}
+	EndGlobalSection
+EndGlobal
