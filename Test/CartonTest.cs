@@ -13,25 +13,34 @@ namespace Bingo.Domain.Test
         {
             //Arrange
             Carton carton = new Carton();
-            string[] respuestas = new string[75];
-            bool isGanador = false;
+            string respuesta ="";
             //Act
             for (int i = 0; i < 75; i++)
             {
-                respuestas.SetValue(carton.MarcarNumero(i+1),i);
-            }
-
-            for (int i = 0; i < 75; i++)
-            {           
-                if (respuestas[i]!=null ) {
-                    if (respuestas[i].Contains("Carton ganador"))
-                    isGanador = true;
-                };
+                var res = carton.MarcarNumero(i + 1);
+                if (res !=null)
+                respuesta = res;
             }
 
             //Assert
-            Assert.IsTrue(isGanador);
+            Assert.AreEqual("Carton ganador: Carton lleno", respuesta);
 
+        }
+        [TestCase("X",TestName = "VerificarVictoriaConFormaX",ExpectedResult = "Carton ganador: Figura X")]
+        [TestCase("L", TestName = "VerificarVictoriaConFormaL", ExpectedResult = "Carton ganador: Figura L")]
+        public string VerificarVictoriaConFigura(string figura)
+        {
+            //Arange
+            Carton carton = new Carton();
+            string respuesta = "";
+
+            //Act
+            foreach (var cord in FigurasCarton.Figuras(figura))
+            {
+                respuesta = carton.MarcarNumero(carton.ObtenerNumeroEnCoordenada(cord));
+            }
+
+            return respuesta;
         }
     }
 }

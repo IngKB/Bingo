@@ -5,9 +5,8 @@ namespace Bingo.Domain
 {
     public class Carton
     {
-        int[,] Numeros = new int[5, 5];
-        List<int> NumerosMarcados = new List<int>();
-
+        public Casilla[] Casillas;
+ 
         public Carton()
         {
             CrearCarton();
@@ -15,27 +14,87 @@ namespace Bingo.Domain
 
         public string MarcarNumero(int numero)
         {
-            if (EstaElNumeroEnCarton(numero))
+            int posicion = EstaElNumeroEnCarton(numero);
+            if(posicion != -1)
             {
-                NumerosMarcados.Add(numero);
+                MarcarCasilla(posicion);
+
                 if (VerificarCartonCompleto())
                 {
-                    return "Carton ganador";
+                    return "Carton ganador: Carton lleno";
                 }
+                if (VerificarCartonFigura(FigurasCarton.FiguraX))
+                {
+                    return "Carton ganador: Figura X";
+                }
+                if (VerificarCartonFigura(FigurasCarton.FiguraL))
+                {
+                    return "Carton ganador: Figura L";
+                }
+
             }
             return null;
         }
 
         public bool VerificarCartonCompleto()
         {
-            return NumerosMarcados.Count == 24;
+            for(int i =0; i < 25; i++)
+            {
+                if (Casillas[i].Marcado == false)
+                {
+                    return false;
+                }
+
+            }
+            return true;
+        }
+
+        public bool VerificarCartonFigura(Coordenada[] figura)
+        {
+            foreach (Coordenada cord in figura)
+            {
+              
+                if (ObtenerCasillaEnCoordenada(cord).Marcado == false) return false;
+            }
+            return true;
+        }
+
+
+        private Casilla ObtenerCasillaEnCoordenada(Coordenada cord)
+        {
+            for (int i = 0; i < 25; i++)
+            {
+                
+                if (Casillas[i].coordenada.SonCoordenadasIguales(cord))
+                {
+                    return Casillas[i];
+                }
+            }
+
+            return null;
+        }
+        public int ObtenerNumeroEnCoordenada(Coordenada cord)
+        {
+            Casilla cas = ObtenerCasillaEnCoordenada(cord);
+            if (cas != null)
+            {
+                return cas.Numero;
+            }
+
+            return -1;
         }
 
         public void CrearCarton()
         {
+            Casillas = new Casilla[25];
+            for(int i = 0; i < 25; i++)
+            {
+                Casillas[i] = new Casilla();
+            }
             var rand = new Random();
             var minVal = 1;
             var maxVal = 16;
+            var cont = 0;
             for (int i = 0; i<5;i++)
             {
                 for(int j = 0; j < 5; j++)
@@ -44,34 +103,50 @@ namespace Bingo.Domain
                     {
                         var num = rand.Next(minVal, maxVal);
 
-                        while (EstaElNumeroEnCarton(num))
+                        while (EstaElNumeroEnCarton(num)!=-1)
                         {
                             num = rand.Next(minVal, maxVal);
                         }
 
-                        Numeros[i, j] = num;
+                        Casillas[cont].Numero = num;
                     }
                     else {
-                        Numeros[i, j] = 0;
+                        Casillas[cont].Marcado = true;
+                        Casillas[cont].Numero = 0;
                     }
-                }            
+
+                    Casillas[cont].coordenada = new Coordenada(i, j);
+                    cont++;
+                }
+                
                 minVal += 15;
                 maxVal += 15;
+
+                
             }  
         }
 
-        private bool EstaElNumeroEnCarton(int num)
+        private int EstaElNumeroEnCarton(int num)
         {
-            for (int i = 0; i < 5; i++)
+            
+            for (int i = 0; i < 25; i++)
             {
-                for (int j = 0; j < 5; j++)
-                { 
-                    if(Numeros[i,j] == num)
-                    {
-                        return true;
-                    }
+                if(Casillas[i].Numero == num)
+                {
+                    return i;
                 }
             }
+            return -1;
+        }
+
+        private bool MarcarCasilla(int posicion)
+        {
+            if (Casillas[posicion].Marcado == false)
+            {
+                Casillas[posicion].Marcado = true;
+                return true;
+            }
+
             return false;
         }
     }

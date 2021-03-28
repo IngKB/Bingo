@@ -10,7 +10,7 @@ namespace Bingo.Domain.Test
         {
         }
 
-        [TestCase(76, "El numero sobrepasa el limite", TestName = "SortearNumeroSuperiorAlLimite", ExpectedResult =)]
+        [TestCase(76, "El numero sobrepasa el limite", TestName = "SortearNumeroSuperiorAlLimite")]
         [TestCase(0, "El numero esta por debajo del limite inferior", TestName = "SortearNumeroInferiorAlLimite")]
         public void SortearNumeroTest(int numero, string resultadoEsperado)
         {
