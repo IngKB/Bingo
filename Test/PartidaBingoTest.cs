@@ -24,7 +24,20 @@ namespace Bingo.Domain.Test
             Assert.AreEqual(resultado, resultadoEsperado);
         }
 
-        
+        /*
+         DADO que exista una partida de bingo y sus respectivos cartones
+         CUANDO se sortee un número
+         ENTONCES el sistema debe marcar el número en los cartones
+         */
+        [Test]
+        public void SortearNumeroEnCartones()
+        {
+            var cartones = new Carton[25];
+
+            var partidaBingo = new PartidaBingo();
+            partidaBingo.CrearCartones = cartones;
+
+        }
 
 
 

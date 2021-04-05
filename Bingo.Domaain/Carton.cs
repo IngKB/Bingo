@@ -5,7 +5,7 @@ namespace Bingo.Domain
 {
     public class Carton
     {
-        public Casilla[] Casillas;
+        private Casilla[] Casillas;
  
         public Carton()
         {

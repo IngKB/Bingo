@@ -26,6 +26,8 @@ namespace Bingo.Domain.Test
             Assert.AreEqual("Carton ganador: Carton lleno", respuesta);
 
         }
+
+
         [TestCase("X",TestName = "VerificarVictoriaConFormaX",ExpectedResult = "Carton ganador: Figura X")]
         [TestCase("L", TestName = "VerificarVictoriaConFormaL", ExpectedResult = "Carton ganador: Figura L")]
         public string VerificarVictoriaConFigura(string figura)

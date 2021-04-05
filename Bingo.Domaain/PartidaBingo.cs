@@ -6,15 +6,17 @@ namespace Bingo.Domain
 {
     public class PartidaBingo
     {
+        private Carton[] Cartones { get; set; }
         int[,] Numeros = new int[5, 15];
         List<int> NumerosMarcados = new List<int>();
 
         public PartidaBingo()
         {
-            CrearBingo();
+            CrearNumerosBingo();
+
         }
 
-        public void CrearBingo()
+        public void CrearNumerosBingo()
         {
             int cont = 1;
             for (int i = 0; i < 5; i++)
@@ -25,10 +27,6 @@ namespace Bingo.Domain
                     cont++;
                 }
             }
-        }
-        public string SortearNumero()
-        {
-            throw new NotImplementedException();
         }
 
         public string SortearNumero(int numero)
@@ -44,6 +42,12 @@ namespace Bingo.Domain
             {
                 if(NumerosMarcados.Find(x => x == numero) == 0)
                 {
+                    
+                    foreach (Carton carton in Cartones)
+                    {
+                        carton.MarcarNumero(numero);
+                    }
+
                     NumerosMarcados.Add(numero);
                     return "Numero registrado";
                 }
@@ -52,6 +56,10 @@ namespace Bingo.Domain
             }
 
         }
+
+        public 
+
+
 
 
     }
