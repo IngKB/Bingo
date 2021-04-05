@@ -32,11 +32,13 @@ namespace Bingo.Domain.Test
         [Test]
         public void SortearNumeroEnCartones()
         {
+
+            //Toca inicializaro los cartones
             var cartones = new Carton[25];
-
             var partidaBingo = new PartidaBingo();
-            partidaBingo.CrearCartones = cartones;
+            partidaBingo.AsignarCartones(cartones);
 
+            partidaBingo.SortearNumero(3);
         }
 
 

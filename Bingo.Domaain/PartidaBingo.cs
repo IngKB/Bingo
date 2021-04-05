@@ -13,7 +13,6 @@ namespace Bingo.Domain
         public PartidaBingo()
         {
             CrearNumerosBingo();
-
         }
 
         public void CrearNumerosBingo()
@@ -29,6 +28,11 @@ namespace Bingo.Domain
             }
         }
 
+        public void AsignarCartones(Carton[] cartons)
+        {
+            Cartones = cartons;
+        }
+
         public string SortearNumero(int numero)
         {
             if(numero > 75 )
@@ -42,7 +46,6 @@ namespace Bingo.Domain
             {
                 if(NumerosMarcados.Find(x => x == numero) == 0)
                 {
-                    
                     foreach (Carton carton in Cartones)
                     {
                         carton.MarcarNumero(numero);
@@ -56,10 +59,6 @@ namespace Bingo.Domain
             }
 
         }
-
-        public 
-
-
 
 
     }
