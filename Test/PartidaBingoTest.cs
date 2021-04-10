@@ -1,5 +1,6 @@
 using Bingo.Domain;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace Bingo.Domain.Test
 {
@@ -25,20 +26,25 @@ namespace Bingo.Domain.Test
         }
 
         /*
-         DADO que exista una partida de bingo y sus respectivos cartones
-         CUANDO se sortee un número
-         ENTONCES el sistema debe marcar el número en los cartones
+         Caso exitoso de sortear un numero
          */
         [Test]
         public void SortearNumeroEnCartones()
         {
 
             //Toca inicializaro los cartones
-            var cartones = new Carton[25];
-            var partidaBingo = new PartidaBingo();
-            partidaBingo.AsignarCartones(cartones);
+            List<Carton> cartones = new List<Carton>();
 
-            partidaBingo.SortearNumero(3);
+            for (int i = 0; i < 20; i++)
+            {
+                cartones.Add(new Carton());
+            }
+            var partidaBingo = new PartidaBingo();
+            partidaBingo.AgregarCartones(cartones);
+
+            var respuesta = partidaBingo.SortearNumero(3);
+
+            Assert.AreEqual("Numero registrado", respuesta);
         }
 
 

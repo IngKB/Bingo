@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Bingo.Domain.Base;
+using Bingo.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace Bingo.Domain
 {
-    public class Carton
+    public class Carton: Entity<int>
     {
         private Casilla[] Casillas;
- 
+        private Jugador Jugador { get; set; }
         public Carton()
         {
             CrearCarton();
@@ -34,6 +36,11 @@ namespace Bingo.Domain
 
             }
             return null;
+        }
+
+        public void AsignarJugador(Jugador jugador)
+        {
+            Jugador = jugador;
         }
 
         public bool VerificarCartonCompleto()
@@ -121,8 +128,6 @@ namespace Bingo.Domain
                 
                 minVal += 15;
                 maxVal += 15;
-
-                
             }  
         }
 

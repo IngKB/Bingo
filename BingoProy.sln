@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bingo.Domain.Test", "Test\B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bingo.Domain", "Bingo.Domaain\Bingo.Domain.csproj", "{4E8BE1A5-5E71-4646-A4BA-80B0BA72C448}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "projAspAngular", "projAspAngular\projAspAngular.csproj", "{5A0A0DE4-0450-4FA1-BF8A-3D7AA55687C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSocket", "projAspAngular\WebSocket.csproj", "{5A0A0DE4-0450-4FA1-BF8A-3D7AA55687C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bingo.Application", "Application\Bingo.Application.csproj", "{03ADD2C5-C329-4E80-98B5-4E2F115E024A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bingo.Infraestructura", "Bing.Infraestructura\Bingo.Infraestructura.csproj", "{FD9F5B59-5681-4010-997D-ECD37C9769BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{5A0A0DE4-0450-4FA1-BF8A-3D7AA55687C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A0A0DE4-0450-4FA1-BF8A-3D7AA55687C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A0A0DE4-0450-4FA1-BF8A-3D7AA55687C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03ADD2C5-C329-4E80-98B5-4E2F115E024A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03ADD2C5-C329-4E80-98B5-4E2F115E024A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03ADD2C5-C329-4E80-98B5-4E2F115E024A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03ADD2C5-C329-4E80-98B5-4E2F115E024A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD9F5B59-5681-4010-997D-ECD37C9769BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD9F5B59-5681-4010-997D-ECD37C9769BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD9F5B59-5681-4010-997D-ECD37C9769BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD9F5B59-5681-4010-997D-ECD37C9769BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
