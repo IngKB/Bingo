@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Bingo.Domain.Contracts
 {
-    public interface IUnitOfWork: IDisposable
+    public interface IUnitOfWork
     {
         ICartonRepository CartonRepository { get; }
         int Commit();

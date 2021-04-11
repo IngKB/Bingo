@@ -1,8 +1,8 @@
-﻿using Bingo.Domain;
+﻿using Bingo.Domain.Entities;
 using Bingo.Domain.Contracts;
 using System;
 
-namespace Application
+namespace Bingo.Application
 {
     public class CrearCartonService
     {
@@ -16,7 +16,9 @@ namespace Application
         public CrearCartonResponse Ejecutar(CrearCartonRequest request)
         {
 
-            Carton carton = new Carton();
+            Carton carton = new Carton(request.JugadorID);
+            _unitOfWork.CartonRepository.Add(carton);
+            _unitOfWork.Commit();
             return new CrearCartonResponse() { Mensaje = "Carton registrado"};
         }
 

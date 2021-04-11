@@ -10,12 +10,16 @@ namespace Bingo.Infraestructura
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public ICartonRepository CartonRepository => throw new NotImplementedException();
 
+        private readonly BingoContext _context;
+        private ICartonRepository _CartonRepository;
+        public ICartonRepository CartonRepository { get { return _CartonRepository ?? (_CartonRepository = new CartonRepository(_context)); } }
+
+        public UnitOfWork(BingoContext context) => _context = context;
 
         public int Commit()
         {
-            throw new NotImplementedException();
+           return _context.SaveChanges();
         }
 
         public void Dispose()

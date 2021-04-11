@@ -1,17 +1,25 @@
 ﻿using Bingo.Domain.Base;
-using Bingo.Domain.Entities;
 using System;
 using System.Collections.Generic;
 
-namespace Bingo.Domain
+namespace Bingo.Domain.Entities
 {
     public class Carton: Entity<int>
     {
+
+        public string codigo { get; private set; }
+
         private Casilla[] Casillas;
-        private Jugador Jugador { get; set; }
-        public Carton()
+        public string JugadorID { get; set; }
+        public Carton(string jugadorID)
         {
+            JugadorID = jugadorID;
             CrearCarton();
+        }
+
+        private Carton()
+        {
+
         }
 
         public string MarcarNumero(int numero)
@@ -38,9 +46,9 @@ namespace Bingo.Domain
             return null;
         }
 
-        public void AsignarJugador(Jugador jugador)
+        public void AsignarJugador(string jugador)
         {
-            Jugador = jugador;
+            JugadorID = jugador;
         }
 
         public bool VerificarCartonCompleto()

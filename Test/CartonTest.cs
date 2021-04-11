@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Bingo.Domain.Entities;
 using NUnit.Framework;
 
 namespace Bingo.Domain.Test
@@ -12,7 +13,7 @@ namespace Bingo.Domain.Test
         public void VerificarVictoriaConCartonLleno()
         {
             //Arrange
-            Carton carton = new Carton();
+            Carton carton = new Carton("191");
             string respuesta ="";
             //Act
             for (int i = 0; i < 75; i++)
@@ -33,7 +34,7 @@ namespace Bingo.Domain.Test
         public string VerificarVictoriaConFigura(string figura)
         {
             //Arange
-            Carton carton = new Carton();
+            Carton carton = new Carton("101");
             string respuesta = "";
 
             //Act

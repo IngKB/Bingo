@@ -1,17 +1,26 @@
-﻿using Bingo.Domain;
+﻿using Bingo.Domain.Contracts;
+using Bingo.Domain.Entities;
 using Bingo.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Bing.Infraestructura
+namespace Bingo.Infraestructura
 {
     public class CartonRepository : ICartonRepository
     {
-        public void Add(Carton entity)
+
+        private BingoContext _context;
+
+        public CartonRepository(BingoContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+
+        public void Add(Carton Carton)
+        {
+            _context.Cartones.Add(Carton);
         }
 
         public void AddRange(List<Carton> entities)
@@ -19,9 +28,9 @@ namespace Bing.Infraestructura
             throw new NotImplementedException();
         }
 
-        public void Delete(Carton entity)
+        public void Delete(Carton Carton)
         {
-            throw new NotImplementedException();
+            _context.Cartones.Remove(Carton);
         }
 
         public void DeleteRange(List<Carton> entities)
@@ -29,9 +38,10 @@ namespace Bing.Infraestructura
             throw new NotImplementedException();
         }
 
-        public void Edit(Carton entity)
+        public Carton Find(string numero)
         {
-            throw new NotImplementedException();
+            var cuenta=_context.Cartones.FirstOrDefault(carton=> carton.codigo==numero);
+            return cuenta;
         }
 
         public Carton Find(object id)
@@ -54,7 +64,17 @@ namespace Bing.Infraestructura
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Carton> GetAll()
+        public List<Carton> GetAll()
+        {
+            return _context.Cartones.ToList();
+        }
+
+        public void Update(Carton Carton)
+        {
+            _context.Cartones.Update(Carton);
+        }
+
+        IEnumerable<Carton> IGenericRepository<Carton>.GetAll()
         {
             throw new NotImplementedException();
         }
