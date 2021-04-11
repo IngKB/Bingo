@@ -38,9 +38,9 @@ namespace Bingo.Infraestructura
             throw new NotImplementedException();
         }
 
-        public Carton Find(string numero)
+        public Carton Find(int numero)
         {
-            var cuenta=_context.Cartones.FirstOrDefault(carton=> carton.codigo==numero);
+            var cuenta=_context.Cartones.FirstOrDefault(carton=> carton.Id==numero);
             return cuenta;
         }
 

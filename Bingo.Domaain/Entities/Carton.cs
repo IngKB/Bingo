@@ -7,8 +7,7 @@ namespace Bingo.Domain.Entities
     public class Carton: Entity<int>
     {
 
-        public string codigo { get; private set; }
-
+        
         private Casilla[] Casillas;
         public string JugadorID { get; set; }
         public Carton(string jugadorID)

@@ -7,10 +7,12 @@ namespace Bingo.Application
     public class CrearCartonService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private IEmailSender _emailSender;
 
-        public CrearCartonService(IUnitOfWork unitOfWork)
+        public CrearCartonService(IUnitOfWork unitOfWork, IEmailSender emailSender)
         {
             _unitOfWork = unitOfWork;
+            _emailSender = emailSender;
         }
 
         public CrearCartonResponse Ejecutar(CrearCartonRequest request)
@@ -19,6 +21,9 @@ namespace Bingo.Application
             Carton carton = new Carton(request.JugadorID);
             _unitOfWork.CartonRepository.Add(carton);
             _unitOfWork.Commit();
+
+            //aqui se mandaria correo al jugador
+            var result = _emailSender.SendEmailAsync("test@example.co", "Carton comprado", $"Usted a comprado el carton numero {carton.Id}");
             return new CrearCartonResponse() { Mensaje = "Carton registrado"};
         }
 
