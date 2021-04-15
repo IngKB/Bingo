@@ -23,7 +23,7 @@ namespace Bingo.Application
             _unitOfWork.Commit();
 
             //aqui se mandaria correo al jugador
-            var result = _emailSender.SendEmailAsync("test@example.co", "Carton comprado", $"Usted a comprado el carton numero {carton.Id}");
+            var result = _emailSender.SendEmailAsync("karlosmario0123@gmail.com", "Carton comprado", $"Usted a comprado el carton numero {carton.Id}");
             return new CrearCartonResponse() { Mensaje = "Carton registrado"};
         }
 
