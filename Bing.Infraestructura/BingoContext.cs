@@ -31,7 +31,7 @@ namespace Bingo.Infraestructura
             modelBuilder.Entity<Carton>().OwnsMany(
                  p => p.Casillas, a =>
                  {
-                     a.WithOwner().HasForeignKey("OwnerId");
+                     a.WithOwner().HasForeignKey("CartonId");
                      a.Property<int>("Id");
                      a.HasKey("Id");
                      a.OwnsOne(c => c.coordenada);

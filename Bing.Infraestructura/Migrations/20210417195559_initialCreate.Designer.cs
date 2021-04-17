@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bingo.Infraestructura.Migrations
 {
     [DbContext(typeof(BingoContext))]
-    [Migration("20210416185320_testmigration")]
-    partial class testmigration
+    [Migration("20210417195559_initialCreate")]
+    partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,23 +40,23 @@ namespace Bingo.Infraestructura.Migrations
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int");
 
+                            b1.Property<int>("CartonId")
+                                .HasColumnType("int");
+
                             b1.Property<bool>("Marcado")
                                 .HasColumnType("tinyint(1)");
 
                             b1.Property<int>("Numero")
                                 .HasColumnType("int");
 
-                            b1.Property<int>("OwnerId")
-                                .HasColumnType("int");
-
                             b1.HasKey("Id");
 
-                            b1.HasIndex("OwnerId");
+                            b1.HasIndex("CartonId");
 
                             b1.ToTable("Casilla");
 
                             b1.WithOwner()
-                                .HasForeignKey("OwnerId");
+                                .HasForeignKey("CartonId");
 
                             b1.OwnsOne("Bingo.Domain.ValueObjects.Coordenada", "coordenada", b2 =>
                                 {
