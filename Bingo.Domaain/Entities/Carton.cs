@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Bingo.Domain.Entities
 {
-    public class Carton: Entity<int>
+    public class Carton: Entity<int>, IAggregateRoot
     {
 
         

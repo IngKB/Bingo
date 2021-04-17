@@ -21,7 +21,7 @@ namespace Bingo.Application.Test
         public void CrearCartonTest()
         {
             var request = new CrearCartonRequest { JugadorID = "101" };
-            CrearCartonService _service = new CrearCartonService(new UnitOfWork(_context), new EmailSenderFake());
+            CrearCartonService _service = new CrearCartonService(new UnitOfWork(_context), new EmailSenderFake(), new CartonRepository(_context));
 
             var response = _service.Ejecutar(request);
             Assert.AreEqual("Carton registrado",response.Mensaje);

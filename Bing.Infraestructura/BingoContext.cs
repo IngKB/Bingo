@@ -1,5 +1,6 @@
 ﻿using Bingo.Domain.Entities;
 using Bingo.Domain.ValueObjects;
+using Bingo.Infraestructura.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -11,15 +12,16 @@ using System.Threading.Tasks;
 
 namespace Bingo.Infraestructura
 {
-    public class BingoContext : DbContext
+    public class BingoContext : DbContextBase
     {
-        //public BingoContext(DbContextOptions options) : base(options)
-        //{
-        //}
+        public BingoContext(DbContextOptions options) : base(options)
+        {
+        }
 
-        //protected BingoContext()
-        //{
-        //}
+        public BingoContext()
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL("server=localhost;database=pruebabingo;user=root;");
@@ -32,7 +34,7 @@ namespace Bingo.Infraestructura
                  p => p.Casillas, a =>
                  {
                      a.WithOwner().HasForeignKey("CartonId");
-                     a.Property<int>("Id");
+                     a.Property<int>("Id").ValueGeneratedOnAdd();
                      a.HasKey("Id");
                      a.OwnsOne(c => c.coordenada);
                  });

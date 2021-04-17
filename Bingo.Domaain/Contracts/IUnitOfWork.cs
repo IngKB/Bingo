@@ -7,7 +7,6 @@ namespace Bingo.Domain.Contracts
 {
     public interface IUnitOfWork
     {
-        ICartonRepository CartonRepository { get; }
         int Commit();
     }
 }
