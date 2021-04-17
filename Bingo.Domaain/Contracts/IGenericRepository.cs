@@ -18,7 +18,7 @@ namespace Bingo.Domain.Contracts
         void DeleteRange(List<T> entities);
 
         IEnumerable<T> GetAll();
-
+        // para uso de linq y habilitar consultas flexibles
         T FindFirstOrDefault(Expression<Func<T, bool>> predicate);
 
         IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate);

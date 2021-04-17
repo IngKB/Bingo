@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Bingo.Domain
+namespace Bingo.Domain.ValueObjects
 {
     public class Casilla
     {

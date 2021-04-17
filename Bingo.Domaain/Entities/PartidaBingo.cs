@@ -1,4 +1,5 @@
 ﻿using Bingo.Domain.Entities;
+using Bingo.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;

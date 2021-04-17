@@ -11,7 +11,7 @@ namespace Bingo.Infraestructura
     public class CartonRepository : ICartonRepository
     {
 
-        private BingoContext _context;
+        private readonly BingoContext _context;
 
         public CartonRepository(BingoContext context)
         {

@@ -1,4 +1,5 @@
 ﻿using Bingo.Domain.Base;
+using Bingo.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 
@@ -8,7 +9,7 @@ namespace Bingo.Domain.Entities
     {
 
         
-        private Casilla[] Casillas;
+        public List<Casilla> Casillas { get; private set; }
         public string JugadorID { get; set; }
         public Carton(string jugadorID)
         {
@@ -100,10 +101,10 @@ namespace Bingo.Domain.Entities
 
         public void CrearCarton()
         {
-            Casillas = new Casilla[25];
+            Casillas = new List<Casilla>();
             for(int i = 0; i < 25; i++)
             {
-                Casillas[i] = new Casilla();
+                Casillas.Add(new Casilla());
             }
             var rand = new Random();
             var minVal = 1;

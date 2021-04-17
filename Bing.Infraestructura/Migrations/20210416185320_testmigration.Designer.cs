@@ -2,14 +2,16 @@
 using Bingo.Infraestructura;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bingo.Infraestructura.Migrations
 {
     [DbContext(typeof(BingoContext))]
-    partial class BingoContextModelSnapshot : ModelSnapshot
+    [Migration("20210416185320_testmigration")]
+    partial class testmigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

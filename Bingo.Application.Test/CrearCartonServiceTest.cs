@@ -14,7 +14,7 @@ namespace Bingo.Application.Test
         public void Setup()
         {
             var optionsInMemory = new DbContextOptionsBuilder<BingoContext>().UseInMemoryDatabase("Bingo").Options;
-            _context = new BingoContext(optionsInMemory);
+           // _context = new BingoContext(optionsInMemory);
         }
 
         [Test]

@@ -1,4 +1,4 @@
-﻿namespace Bingo.Domain
+﻿namespace Bingo.Domain.ValueObjects
 {
     public  class Coordenada
     {

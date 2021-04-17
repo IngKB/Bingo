@@ -17,23 +17,25 @@ namespace ConsoleUI
 
             var email = new SendgridSender();
 
-            var optionsInMemory = new DbContextOptionsBuilder<BingoContext>()
-            .UseInMemoryDatabase("Bingo")
-            .Options;
+            var optionsMySql = new DbContextOptionsBuilder<BingoContext>()
+                .UseMySQL("server=localhost;database=pruebabingo;user=root;").Options;
+            //var optionsInMemory = new DbContextOptionsBuilder<BingoContext>()
+            //.UseInMemoryDatabase("Bingo")
+            //.Options;
 
-            using var db = new BingoContext(optionsInMemory);
+           // using var db = new BingoContext(optionsMySql);
 
-            CrearCarton(db, email);
+            //CrearCarton(db, email);
 
         }
-        private static void CrearCarton(BingoContext context, SendgridSender emailsender)
-        {
-            CrearCartonService _service = new CrearCartonService(new UnitOfWork(context), emailsender);
-            var requestCrear = new CrearCartonRequest() { JugadorID = "100010" };
+        //private static void CrearCarton(BingoContext context, SendgridSender emailsender)
+        //{
+        //    CrearCartonService _service = new CrearCartonService(new UnitOfWork(context), emailsender);
+        //    var requestCrear = new CrearCartonRequest() { JugadorID = "100010" };
 
-            CrearCartonResponse responseCrear = _service.Ejecutar(requestCrear);
+        //    CrearCartonResponse responseCrear = _service.Ejecutar(requestCrear);
 
-            Console.WriteLine(responseCrear.Mensaje);
-        }
+        //    Console.WriteLine(responseCrear.Mensaje);
+        //}
     }
 }
