@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Bingo.Infraestructura.Migrations
+namespace WebSocket.Migrations
 {
     [DbContext(typeof(BingoContext))]
     partial class BingoContextModelSnapshot : ModelSnapshot
@@ -22,12 +22,49 @@ namespace Bingo.Infraestructura.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("JugadorID")
+                    b.Property<string>("JugadorId")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.ToTable("Cartones");
+                });
+
+            modelBuilder.Entity("Bingo.Domain.Entities.Jugador", b =>
+                {
+                    b.Property<string>("Identificacion")
+                        .HasColumnType("varchar(767)");
+
+                    b.Property<string>("Ciudad")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Correo")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Genero")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Primer_Apellido")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Primer_Nombre")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Segundo_Apellido")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Segundo_Nombre")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Telefono")
+                        .HasColumnType("text");
+
+                    b.HasKey("Identificacion");
+
+                    b.ToTable("Jugadores");
                 });
 
             modelBuilder.Entity("Bingo.Domain.Entities.Carton", b =>

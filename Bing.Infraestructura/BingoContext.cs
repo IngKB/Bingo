@@ -22,14 +22,14 @@ namespace Bingo.Infraestructura
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL("server=localhost;database=pruebabingo;user=root;");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseMySQL("server=localhost;database=pruebabingo;user=root;");
+        //}
         public DbSet<Carton> Cartones { get; set; }
+        public DbSet<Jugador> Jugadores { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // modelBuilder.Entity<Carton>().OwnsMany(typeof(Casilla), "Casillas");
             modelBuilder.Entity<Carton>().OwnsMany(
                  p => p.Casillas, a =>
                  {
@@ -38,6 +38,7 @@ namespace Bingo.Infraestructura
                      a.HasKey("Id");
                      a.OwnsOne(c => c.coordenada);
                  });
+            modelBuilder.Entity<Jugador>().HasKey(j => j.Identificacion);
         }
 
 

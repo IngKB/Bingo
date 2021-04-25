@@ -14,17 +14,16 @@ namespace Bingo.Application.Test
         public void Setup()
         {
             var optionsInMemory = new DbContextOptionsBuilder<BingoContext>().UseInMemoryDatabase("Bingo").Options;
-           // _context = new BingoContext(optionsInMemory);
+             _context = new BingoContext(optionsInMemory);
         }
 
         [Test]
         public void CrearCartonTest()
         {
-            var request = new CrearCartonRequest { JugadorID = "101" };
-            CrearCartonService _service = new CrearCartonService(new UnitOfWork(_context), new EmailSenderFake(), new CartonRepository(_context));
+            CrearCartonService _service = new CrearCartonService();
 
-            var response = _service.Ejecutar(request);
-            Assert.AreEqual("Carton registrado",response.Mensaje);
+            var response = _service.Ejecutar();
+            Assert.AreEqual(0,response.estado);
         }
     }
 }

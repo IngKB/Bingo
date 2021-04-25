@@ -1,10 +1,17 @@
+using Bingo.Domain.Contracts;
+using Bingo.Domain.Repositories;
+using Bingo.Infraestructura;
+using Bingo.Infraestructura.Base;
+using Bingo.Infraestructura.System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using projAspAngular.hubs;
 
 namespace projAspAngular
@@ -22,6 +29,17 @@ namespace projAspAngular
         public void ConfigureServices(IServiceCollection services)
         {
 
+            var connectionString = Configuration.GetConnectionString("BingoContext");//obtiene la configuracion del appsettitgs
+
+            services.AddDbContext<BingoContext>(opt => opt.UseMySQL(connectionString, b => b.MigrationsAssembly("WebSocket")));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>(); //Crear Instancia por peticion IJugadorRepository
+            services.AddScoped<ICartonRepository, CartonRepository>(); //Crear Instancia por peticion
+            services.AddScoped<IDbContext, BingoContext>(); //Crear Instancia por peticion
+            services.AddScoped<IEmailSender, SendgridSender>(); //Crear Instancia por peticion
+            services.AddScoped<IJugadorRepository, JugadorRepository>();
+
+
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder => builder
@@ -34,7 +52,10 @@ namespace projAspAngular
 
             services.AddControllersWithViews();
             services.AddSignalR();
-            
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Bingo.WebApi", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +64,8 @@ namespace projAspAngular
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Banco.WebApi v1"));
             }
             else
             {

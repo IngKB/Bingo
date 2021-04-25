@@ -10,17 +10,12 @@ namespace Bingo.Domain.Entities
 
         
         public List<Casilla> Casillas { get; private set; }
-        public string JugadorID { get; set; }
-        public Carton(string jugadorID)
+        public string JugadorId { get; set; }
+        public Carton()
         {
-            JugadorID = jugadorID;
             CrearCarton();
         }
 
-        private Carton()
-        {
-
-        }
 
         public string MarcarNumero(int numero)
         {
@@ -48,7 +43,7 @@ namespace Bingo.Domain.Entities
 
         public void AsignarJugador(string jugador)
         {
-            JugadorID = jugador;
+            JugadorId = jugador;
         }
 
         public bool VerificarCartonCompleto()

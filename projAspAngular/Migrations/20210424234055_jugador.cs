@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.EntityFrameworkCore.Metadata;
 
-namespace Bingo.Infraestructura.Migrations
+namespace WebSocket.Migrations
 {
-    public partial class initialCreate : Migration
+    public partial class jugador : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,11 +13,31 @@ namespace Bingo.Infraestructura.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    JugadorID = table.Column<string>(type: "text", nullable: true)
+                    JugadorId = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cartones", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Jugadores",
+                columns: table => new
+                {
+                    Identificacion = table.Column<string>(type: "varchar(767)", nullable: false),
+                    Primer_Nombre = table.Column<string>(type: "text", nullable: true),
+                    Segundo_Nombre = table.Column<string>(type: "text", nullable: true),
+                    Primer_Apellido = table.Column<string>(type: "text", nullable: true),
+                    Segundo_Apellido = table.Column<string>(type: "text", nullable: true),
+                    Telefono = table.Column<string>(type: "text", nullable: true),
+                    Correo = table.Column<string>(type: "text", nullable: true),
+                    Genero = table.Column<string>(type: "text", nullable: true),
+                    Ciudad = table.Column<string>(type: "text", nullable: true),
+                    Id = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Jugadores", x => x.Identificacion);
                 });
 
             migrationBuilder.CreateTable(
@@ -52,6 +72,9 @@ namespace Bingo.Infraestructura.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Casilla");
+
+            migrationBuilder.DropTable(
+                name: "Jugadores");
 
             migrationBuilder.DropTable(
                 name: "Cartones");

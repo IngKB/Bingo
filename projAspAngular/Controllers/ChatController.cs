@@ -22,6 +22,7 @@ namespace projAspAngular.Controllers
         {
             _hub = hub;
         }
+        [HttpGet]
         public IActionResult Get()
         {
             var timerManager = new TimeManager(() => _hub.Clients.All.SendAsync("transfertabledata", DummieData()));
