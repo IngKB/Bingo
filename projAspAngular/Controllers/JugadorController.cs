@@ -37,5 +37,21 @@ namespace WebSocket.Controllers
             var response = service.Ejecutar(request);
             return response;
         }
+
+        [HttpGet("/id/{id}")]
+        public ObtenerJugadorResponse ObtenerJugadorxId(string id)
+        {
+            var service = new ObtenerJugadorService(_unitOfWork, _mailServer, _JugadorRepository);
+            var response = service.GetxId(id);
+            return response;
+        }
+
+        [HttpGet("/email/{email}")]
+        public ObtenerJugadorResponse ObtenerJugadorxEmail(string email)
+        {
+            var service = new ObtenerJugadorService(_unitOfWork, _mailServer, _JugadorRepository);
+            var response = service.GetxEmail(email);
+            return response;
+        }
     }
 }

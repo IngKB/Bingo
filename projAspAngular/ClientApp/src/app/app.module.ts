@@ -2,33 +2,42 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { NavMenuComponent } from './shared/components/nav-menu/nav-menu.component';
+import { HomeComponent } from './pages/home/home.component';
+import { FetchDataComponent } from './pages/fetch-data/fetch-data.component';
+import { JugadorBasicComponentComponent } from './pages/Jugador-pages/jugador-basic-component/jugador-basic-component.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ToolbarComponent } from './shared/components/toolbar/toolbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { RegisterDialogComponent } from './pages/Jugador-pages/register-dialog/register-dialog.component';
+import { HomeJugadorComponent } from './pages/Jugador-pages/home-jugador/home-jugador.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    JugadorBasicComponentComponent,
+    ToolbarComponent,
+    RegisterDialogComponent,
+    HomeJugadorComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    MaterialModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [],
+  entryComponents: [RegisterDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

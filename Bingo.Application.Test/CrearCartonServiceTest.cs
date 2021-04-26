@@ -9,12 +9,9 @@ namespace Bingo.Application.Test
     public class CrearCartonServiceTest
     {
 
-        BingoContext _context;
         [SetUp]
         public void Setup()
         {
-            var optionsInMemory = new DbContextOptionsBuilder<BingoContext>().UseInMemoryDatabase("Bingo").Options;
-             _context = new BingoContext(optionsInMemory);
         }
 
         [Test]

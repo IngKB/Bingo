@@ -24,18 +24,23 @@ namespace Bingo.Application
 
         public DefaultResponse Ejecutar(CrearJugadorRequest request)
         {
-            var jugador = _jugardorRepository.FindFirstOrDefault(jugador => jugador.Identificacion == request.jugador.Identificacion);
-            if (jugador == null)
+            var jugadorconID = _jugardorRepository.FindFirstOrDefault(jugador => jugador.Identificacion == request.jugador.Identificacion);
+            var jugadorconEmail = _jugardorRepository.FindFirstOrDefault(jugador => jugador.Correo == request.jugador.Correo);
+           
+            if(jugadorconID != null)
+            {
+                return new DefaultResponse(1, $"Identificación ya se encuentra registrada");
+            }else if(jugadorconEmail != null)
+            {
+                return new DefaultResponse(2, $"Correo ya se encuentra registrado");
+            }
+            else
             {
                 var newJugador = request.jugador;
 
                 _jugardorRepository.Add(newJugador);
                 _unitOfWork.Commit();
                 return new DefaultResponse(0, $"Bienvenido {newJugador.Primer_Nombre}");
-            }
-            else
-            {
-                return new DefaultResponse(0,$"El Jugador ya se encuentra registrado");
             }
         }
     }

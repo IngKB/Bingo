@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SignalRService, WeatherForecast } from '../services/signal-r.service';
+import { SignalRService, WeatherForecast } from '../../services/signal-r.service';
 
 @Component({
   selector: 'app-fetch-data',

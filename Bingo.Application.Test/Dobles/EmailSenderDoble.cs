@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Bingo.Application.Test.Fake
 {
 
-     public class EmailSenderFake : IEmailSender
+     public class EmailSenderDoble : IEmailSender
      {
          public Task SendEmailAsync(string email, string subject, string htmlMessage)
          {

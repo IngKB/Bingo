@@ -33,7 +33,7 @@ namespace WebSocket.Controllers
         [HttpGet]
         public CrearCartonResponse CrearCarton()
         {
-            var service = new CrearCartonService(_unitOfWork, _mailServer, _cartonRepository);
+            var service = new CrearCartonService();
             var response = service.Ejecutar();
             return response;
         }
