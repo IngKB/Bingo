@@ -16,15 +16,18 @@ namespace WebSocket.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IJugadorRepository _JugadorRepository;
+        private readonly IUsuarioRepository _UsuarioRepository;
         private readonly IEmailSender _mailServer;
         public JugadorController
             (IUnitOfWork unitOfWork,
-            IJugadorRepository cuentaBancariaRepository,
+            IJugadorRepository jugadorRepository,
+            IUsuarioRepository usuarioRepository,
             IEmailSender mailServer)
         {
 
             _unitOfWork = unitOfWork;
-            _JugadorRepository = cuentaBancariaRepository;
+            _JugadorRepository = jugadorRepository;
+            _UsuarioRepository = usuarioRepository;
             _mailServer = mailServer;
         }
 
@@ -33,7 +36,7 @@ namespace WebSocket.Controllers
         [HttpPost]
         public DefaultResponse CrearJugador(CrearJugadorRequest request)
         {
-            var service = new CrearJugadorService(_unitOfWork, _mailServer, _JugadorRepository);
+            var service = new CrearJugadorService(_unitOfWork, _mailServer, _UsuarioRepository, _JugadorRepository);
             var response = service.Ejecutar(request);
             return response;
         }

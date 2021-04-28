@@ -1,4 +1,4 @@
-using Bingo.Application.Test.Fake;
+using Bingo.Application.Test.Dobles;
 using Bingo.Infraestructura;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;

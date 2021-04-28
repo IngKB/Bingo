@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ToolbarComponent } from './shared/components/toolbar/toolbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-import { RegisterDialogComponent } from './pages/Jugador-pages/register-dialog/register-dialog.component';
+import { RegisterDialogComponent } from './pages/register-dialog/register-dialog.component';
 import { HomeJugadorComponent } from './pages/Jugador-pages/home-jugador/home-jugador.component';
 
 @NgModule({

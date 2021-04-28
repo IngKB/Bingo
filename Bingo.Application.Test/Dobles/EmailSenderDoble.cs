@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bingo.Application.Test.Fake
+namespace Bingo.Application.Test.Dobles
 {
 
      public class EmailSenderDoble : IEmailSender

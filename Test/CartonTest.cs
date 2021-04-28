@@ -13,7 +13,7 @@ namespace Bingo.Domain.Test
         public void VerificarVictoriaConCartonLleno()
         {
             //Arrange
-            Carton carton = new Carton("191");
+            Carton carton = new();
             string respuesta ="";
             //Act
             for (int i = 0; i < 75; i++)
@@ -34,7 +34,7 @@ namespace Bingo.Domain.Test
         public string VerificarVictoriaConFigura(string figura)
         {
             //Arange
-            Carton carton = new Carton("101");
+            Carton carton = new Carton();
             string respuesta = "";
 
             //Act

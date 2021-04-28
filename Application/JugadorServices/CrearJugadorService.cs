@@ -13,20 +13,23 @@ namespace Bingo.Application
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IJugadorRepository _jugardorRepository;
+        private readonly IUsuarioRepository _usuarioRepository;
         private IEmailSender _emailSender;
 
-        public CrearJugadorService(IUnitOfWork unitOfWork, IEmailSender emailSender, IJugadorRepository jugardorRepository)
+        public CrearJugadorService(IUnitOfWork unitOfWork, IEmailSender emailSender, IUsuarioRepository usuarioRepository, IJugadorRepository jugardorRepository)
         {
             _unitOfWork = unitOfWork;
             _emailSender = emailSender;
             _jugardorRepository = jugardorRepository;
+            _usuarioRepository = usuarioRepository;
+
         }
 
         public DefaultResponse Ejecutar(CrearJugadorRequest request)
         {
-            var jugadorconID = _jugardorRepository.FindFirstOrDefault(jugador => jugador.Identificacion == request.jugador.Identificacion);
-            var jugadorconEmail = _jugardorRepository.FindFirstOrDefault(jugador => jugador.Correo == request.jugador.Correo);
-           
+            var jugadorconID = _jugardorRepository.FindFirstOrDefault(jugador => jugador.Identificacion == request.Jugador.Identificacion);
+            var jugadorconEmail = _jugardorRepository.FindFirstOrDefault(jugador => jugador.Correo == request.Jugador.Correo);
+            
             if(jugadorconID != null)
             {
                 return new DefaultResponse(1, $"Identificación ya se encuentra registrada");
@@ -36,16 +39,15 @@ namespace Bingo.Application
             }
             else
             {
-                var newJugador = request.jugador;
-
+                var newJugador = request.Jugador;
+                var usuario = new Usuario(newJugador.Correo, request.Usuario.Password, newJugador.Identificacion);
                 _jugardorRepository.Add(newJugador);
+                _usuarioRepository.Add(usuario);
                 _unitOfWork.Commit();
                 return new DefaultResponse(0, $"Bienvenido {newJugador.Primer_Nombre}");
             }
         }
     }
-    public record CrearJugadorRequest(Jugador jugador);
-
-    public record DefaultResponse(int estado, string mensaje);
+    public record CrearJugadorRequest(Jugador Jugador, Usuario Usuario);
 
 }

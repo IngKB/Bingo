@@ -5,23 +5,21 @@
 }
 
 .container_image {
-  position: relative;
-  z-index: -1;
+  // z-index: -2;
   button{
     position: absolute;
-    width: clamp(200px,30vw,600px);
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
+    width: clamp(120px, 30vw, 600px);
+    left: 35%;
+    top: clamp(300px, 35vw, 1000px);
     background-color: #FFE523;
     color: black;
-    font-size: 30px;
+    font-size: clamp(20px, 3vw, 30px);
     font-weight: 600;
     padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 30px;
+    // z-index: 3;
   }
 
 }

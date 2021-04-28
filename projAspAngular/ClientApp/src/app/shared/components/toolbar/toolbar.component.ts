@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { RegisterDialogComponent } from 'src/app/pages/Jugador-pages/register-dialog/register-dialog.component';
+import { RegisterDialogComponent } from 'src/app/pages/register-dialog/register-dialog.component';
 
 @Component({
   selector: 'app-toolbar',

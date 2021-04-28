@@ -23,6 +23,6 @@ export class CrearJugadorRequest{
   jugador:JugadorEntity
 }
 export interface CrearJugadorResponse{
-  estado: string,
+  estado: number,
   mensaje: string,
 }

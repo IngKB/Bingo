@@ -38,6 +38,7 @@ namespace projAspAngular
             services.AddScoped<IDbContext, BingoContext>(); //Crear Instancia por peticion
             services.AddScoped<IEmailSender, SendgridSender>(); //Crear Instancia por peticion
             services.AddScoped<IJugadorRepository, JugadorRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
 
             services.AddCors(options =>

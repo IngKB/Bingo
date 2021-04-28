@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bingo.Application.Test.Dobles;
-using Bingo.Application.Test.Fake;
 using Bingo.Domain.Entities;
 using Bingo.Infraestructura;
 using Bingo.Infraestructura.ObjectMother;

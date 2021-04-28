@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {JugadorEntity} from '../../../shared/models/jugador.Entity';
+import {JugadorEntity} from '../../shared/models/jugador.Entity';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { JugadorService } from 'src/app/services/jugador.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-dialog',
@@ -26,14 +27,21 @@ export class RegisterDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<RegisterDialogComponent>,
-    private jugadorService: JugadorService
+    //private jugadorService: JugadorService,
+    private router:Router
   ) { }
 
   ngOnInit() {
   }
 
   saveUser(jugador: JugadorEntity ){
-    this.jugadorService.create(jugador).subscribe(value=>{console.log(value.mensaje)});
+    this.router.navigateByUrl('/userhome');
+    this.dialogRef.close();
+    // this.jugadorService.create(jugador).subscribe(value=>{
+    //   if(value.estado==0){
+    //     this.router.navigateByUrl('/userhome');
+    //   }
+    // });
   }
 
 }

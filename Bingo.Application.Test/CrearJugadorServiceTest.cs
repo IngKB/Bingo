@@ -1,5 +1,4 @@
 ﻿using Bingo.Application.Test.Dobles;
-using Bingo.Application.Test.Fake;
 using Bingo.Domain.Entities;
 using Bingo.Infraestructura;
 using Bingo.Infraestructura.ObjectMother;
@@ -31,11 +30,12 @@ namespace Bingo.Application.Test
         [Test]
         public void CrearJugadorTest()
         {
-            _service = new CrearJugadorService(new UnitOfWork(_context), new EmailSenderDoble(), new JugadorRepository(_context));
+            _service = new CrearJugadorService(new UnitOfWork(_context), new EmailSenderDoble(),new UsuarioRepository(_context), new JugadorRepository(_context));
 
             Jugador jugador = JugadorMother.CrearJugador("1001001001");
+            Usuario usuario = new Usuario(jugador.Correo, "123456", jugador.Identificacion);
 
-            var response = _service.Ejecutar(new CrearJugadorRequest(jugador));
+            var response = _service.Ejecutar(new CrearJugadorRequest(jugador, usuario));
 
             Assert.AreEqual($"Bienvenido {jugador.Primer_Nombre}", response.mensaje);
         }

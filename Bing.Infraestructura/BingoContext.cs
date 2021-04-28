@@ -28,6 +28,7 @@ namespace Bingo.Infraestructura
         //}
         public DbSet<Carton> Cartones { get; set; }
         public DbSet<Jugador> Jugadores { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Carton>().OwnsMany(
