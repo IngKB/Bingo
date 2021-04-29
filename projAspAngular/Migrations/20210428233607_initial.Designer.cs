@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WebSocket.Migrations
 {
     [DbContext(typeof(BingoContext))]
-    [Migration("20210424234055_jugador")]
-    partial class jugador
+    [Migration("20210428233607_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,6 +67,26 @@ namespace WebSocket.Migrations
                     b.HasKey("Identificacion");
 
                     b.ToTable("Jugadores");
+                });
+
+            modelBuilder.Entity("Bingo.Domain.Entities.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("JugadorId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("Bingo.Domain.Entities.Carton", b =>

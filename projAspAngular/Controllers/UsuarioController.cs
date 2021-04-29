@@ -27,6 +27,7 @@ namespace WebSocket.Controllers
 
             _unitOfWork = unitOfWork;
             _JugadorRepository = jugadorRepository;
+            _UsuarioRepository = usuarioRespository;
             _mailServer = mailServer;
         }
 

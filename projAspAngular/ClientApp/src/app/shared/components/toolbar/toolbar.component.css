@@ -4,17 +4,24 @@
 
 .mat-toolbar{
   background-color:#190A38;
+  padding: 10px 10px;
 }
 
 .filler {
   flex: 1 1 auto;
 }
 
-#registro{
+.letrasBlancas{
   margin-right: 15px;
   color: white;
   font-size: 15px;
   font-family: Roboto,"Helvetica Neue",sans-serif;
   cursor: pointer;
 }
+.userbutton{
+  text-align: center;
+  border-radius: 30px;
+  background-color: white;
+}
+
 

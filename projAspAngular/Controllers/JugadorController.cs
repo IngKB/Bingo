@@ -34,7 +34,7 @@ namespace WebSocket.Controllers
 
 
         [HttpPost]
-        public DefaultResponse CrearJugador(CrearJugadorRequest request)
+        public CrearJugadorResponse CrearJugador(CrearJugadorRequest request)
         {
             var service = new CrearJugadorService(_unitOfWork, _mailServer, _UsuarioRepository, _JugadorRepository);
             var response = service.Ejecutar(request);

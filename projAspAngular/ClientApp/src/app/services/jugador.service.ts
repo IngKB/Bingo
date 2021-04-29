@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { baseUrl } from 'src/environments/environment';
 import { JugadorEntity } from '../shared/models/jugador.Entity';
+import { UserEntity } from '../shared/models/user.Entity';
+import { DefaultResponse } from './DefaultResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +13,21 @@ export class JugadorService {
 
   constructor(private http: HttpClient) { }
 
-  create(data:JugadorEntity): Observable<CrearJugadorResponse> {
-    let body= new CrearJugadorRequest();
-    body.jugador = data;
-    return this.http.post<CrearJugadorResponse>(baseUrl+'/api/Jugador/', body);
+  create(jugador:JugadorEntity, usuario:UserEntity): Observable<DefaultResponse> {
+    let body:CrearJugadorRequest={Usuario:usuario,Jugador:jugador};
+    return this.http.post<DefaultResponse>(baseUrl+'/api/Jugador/', body);
   }
 
 }
 
-export class CrearJugadorRequest{
-  jugador:JugadorEntity
+export interface CrearJugadorRequest{
+  Usuario:UserEntity,
+  Jugador:JugadorEntity
 }
+
 export interface CrearJugadorResponse{
-  estado: number,
-  mensaje: string,
+  Estado:number,
+  Mensaje:number,
+  Jugador:JugadorEntity
 }
+

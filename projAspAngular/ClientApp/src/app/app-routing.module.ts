@@ -6,20 +6,20 @@ import { JugadorBasicComponentComponent } from "./pages/Jugador-pages/jugador-ba
 
 const routes: Routes = [
   {
-    path: "",
+    path: "home",
+    component: HomeComponent,
+  },
+  {
+    path: "user",
     component: JugadorBasicComponentComponent,
     children: [
-      {
-        path: "home",
-        component: HomeComponent,
-      },
       {
         path: "userhome",
         component: HomeJugadorComponent,
       },
       {
-        path: "",
-        redirectTo: "home",
+        path: "user",
+        redirectTo: "userhome",
         pathMatch: "full",
       },
     ],

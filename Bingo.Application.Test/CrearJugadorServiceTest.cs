@@ -37,7 +37,7 @@ namespace Bingo.Application.Test
 
             var response = _service.Ejecutar(new CrearJugadorRequest(jugador, usuario));
 
-            Assert.AreEqual($"Bienvenido {jugador.Primer_Nombre}", response.mensaje);
+            Assert.AreEqual($"Bienvenido {jugador.Primer_Nombre}", response.Mensaje);
         }
     }
 }

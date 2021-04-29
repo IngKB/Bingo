@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { RegisterDialogComponent } from './pages/register-dialog/register-dialog.component';
 import { HomeJugadorComponent } from './pages/Jugador-pages/home-jugador/home-jugador.component';
+import { LoginDialogComponent } from './pages/login-dialog/login-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HomeJugadorComponent } from './pages/Jugador-pages/home-jugador/home-ju
     JugadorBasicComponentComponent,
     ToolbarComponent,
     RegisterDialogComponent,
-    HomeJugadorComponent
+    HomeJugadorComponent,
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,7 +39,7 @@ import { HomeJugadorComponent } from './pages/Jugador-pages/home-jugador/home-ju
     ReactiveFormsModule
   ],
   providers: [],
-  entryComponents: [RegisterDialogComponent],
+  entryComponents: [RegisterDialogComponent, LoginDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -67,6 +67,26 @@ namespace WebSocket.Migrations
                     b.ToTable("Jugadores");
                 });
 
+            modelBuilder.Entity("Bingo.Domain.Entities.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("JugadorId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
+                });
+
             modelBuilder.Entity("Bingo.Domain.Entities.Carton", b =>
                 {
                     b.OwnsMany("Bingo.Domain.ValueObjects.Casilla", "Casillas", b1 =>

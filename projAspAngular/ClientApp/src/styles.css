@@ -2,6 +2,8 @@
 
 /* Provide sufficient contrast against white background */
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "./app/styles/global.css";
+
 a {
   color: #0366d6;
 }
