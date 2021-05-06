@@ -17,7 +17,7 @@ namespace Bingo.Domain.Test
         public void SortearNumeroTest(int numero, string resultadoEsperado)
         {
             //Arrange
-            var partidaBingo = new PartidaBingo();
+            var partidaBingo = new PartidaBingo("X");
 
             //Act
             string resultado = partidaBingo.SortearNumero(numero);
@@ -40,7 +40,7 @@ namespace Bingo.Domain.Test
             {
                 cartones.Add(new Carton());
             }
-            var partidaBingo = new PartidaBingo();
+            var partidaBingo = new PartidaBingo("X");
             partidaBingo.AgregarCartones(cartones);
 
             var respuesta = partidaBingo.SortearNumero(3);

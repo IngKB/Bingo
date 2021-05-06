@@ -29,6 +29,8 @@ namespace Bingo.Infraestructura
         public DbSet<Carton> Cartones { get; set; }
         public DbSet<Jugador> Jugadores { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<PartidaBingo> Partidas { get; set; }
+        public DbSet<EventoBingo> Eventos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Carton>().OwnsMany(
@@ -40,6 +42,10 @@ namespace Bingo.Infraestructura
                      a.OwnsOne(c => c.coordenada);
                  });
             modelBuilder.Entity<Jugador>().HasKey(j => j.Identificacion);
+
+            modelBuilder.Entity<EventoBingo>()
+                .HasMany(ev => ev.Partidas)
+                .WithOne(par=>par.Evento);
         }
 
 

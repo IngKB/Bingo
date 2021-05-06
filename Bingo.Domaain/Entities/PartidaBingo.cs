@@ -1,18 +1,22 @@
-﻿using Bingo.Domain.Entities;
+﻿using Bingo.Domain.Base;
+using Bingo.Domain.Entities;
 using Bingo.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Bingo.Domain
+namespace Bingo.Domain.Entities
 {
-    public class PartidaBingo
+    public class PartidaBingo : Entity<int>, IAggregateRoot
     {
         private List<Carton> Cartones { get; set; }
+        public string Tipo { get; private set; }
+        public  EventoBingo Evento { get; private set; }
         private Casilla[] Casillas;
 
-        public PartidaBingo()
+        public PartidaBingo(string tipo)
         {
+            Tipo = tipo;
             Cartones = new List<Carton>();
             CrearNumerosBingo();
         }
