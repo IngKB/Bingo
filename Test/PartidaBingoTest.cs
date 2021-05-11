@@ -38,7 +38,7 @@ namespace Bingo.Domain.Test
 
             for (int i = 0; i < 20; i++)
             {
-                cartones.Add(new Carton());
+                cartones.Add(new Carton(1,"001"));
             }
             var partidaBingo = new PartidaBingo("X");
             partidaBingo.AgregarCartones(cartones);

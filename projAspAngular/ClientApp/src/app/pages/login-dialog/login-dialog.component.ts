@@ -27,7 +27,7 @@ export class LoginDialogComponent implements OnInit {
 
   login(user:UserEntity){
     this.loginService.login(user).subscribe(value=>{
-    console.log(value);
+
       if(value.estado==0){
         this.router.navigateByUrl('user/userhome');
         this.dialogRef.close();

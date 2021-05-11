@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.EntityFrameworkCore.Metadata;
 
 namespace WebSocket.Migrations
@@ -13,11 +14,26 @@ namespace WebSocket.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    EventoId = table.Column<int>(type: "int", nullable: false),
                     JugadorId = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cartones", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Eventos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    FechaInicio = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Estado = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Eventos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,10 +93,35 @@ namespace WebSocket.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Partidas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Tipo = table.Column<string>(type: "text", nullable: true),
+                    EventoId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Partidas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Partidas_Eventos_EventoId",
+                        column: x => x.EventoId,
+                        principalTable: "Eventos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Casilla_CartonId",
                 table: "Casilla",
                 column: "CartonId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Partidas_EventoId",
+                table: "Partidas",
+                column: "EventoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -92,10 +133,16 @@ namespace WebSocket.Migrations
                 name: "Jugadores");
 
             migrationBuilder.DropTable(
+                name: "Partidas");
+
+            migrationBuilder.DropTable(
                 name: "Usuarios");
 
             migrationBuilder.DropTable(
                 name: "Cartones");
+
+            migrationBuilder.DropTable(
+                name: "Eventos");
         }
     }
 }

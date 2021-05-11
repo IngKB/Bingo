@@ -42,7 +42,7 @@ namespace Bingo.Application.Test
 
             var response = _service.Ejecutar(new LoginUsuarioRequest(usuario));
 
-            Assert.AreEqual($"Bienvenido {usuario.UserName}", response.Mensaje);
+            Assert.AreEqual($"Bienvenido {usuario.UserName}", response.mensaje);
         }
     }
 }

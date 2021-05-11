@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { LoginDialogComponent } from 'src/app/pages/login-dialog/login-dialog.component';
 import { RegisterDialogComponent } from 'src/app/pages/register-dialog/register-dialog.component';
 import { LoginService } from 'src/app/services/login.service';
@@ -13,7 +14,9 @@ export class ToolbarComponent implements OnInit {
 
   logged:boolean;
   name:string;
-  constructor(public dialog: MatDialog,private loginService:LoginService) { }
+  constructor(public dialog: MatDialog,
+    private loginService:LoginService,
+    private router:Router) { }
 
   ngOnInit() {
     this.logged=false;
@@ -25,6 +28,7 @@ export class ToolbarComponent implements OnInit {
       minHeight: '460px',
       width: '800px',
     });
+    dialogRef.afterClosed().subscribe(_=>this.checkisLogged());
   }
 
   openDialogLogin(){
@@ -32,7 +36,7 @@ export class ToolbarComponent implements OnInit {
       minHeight:'250px',
       width:'300px'
     })
-    dialogRef.afterClosed();
+    dialogRef.afterClosed().subscribe(_=>this.checkisLogged());
   }
 
   checkisLogged(){
@@ -44,6 +48,8 @@ export class ToolbarComponent implements OnInit {
 
   logOut(){
     this.loginService.logout();
+    this.logged = false;
+    this.router.navigateByUrl("/home");
   }
 
 }

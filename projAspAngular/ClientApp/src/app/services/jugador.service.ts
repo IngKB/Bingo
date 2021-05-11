@@ -14,20 +14,20 @@ export class JugadorService {
   constructor(private http: HttpClient) { }
 
   create(jugador:JugadorEntity, usuario:UserEntity): Observable<DefaultResponse> {
-    let body:CrearJugadorRequest={Usuario:usuario,Jugador:jugador};
+    let body:CrearJugadorRequest={usuario:usuario,jugador:jugador};
     return this.http.post<DefaultResponse>(baseUrl+'/api/Jugador/', body);
   }
 
 }
 
 export interface CrearJugadorRequest{
-  Usuario:UserEntity,
-  Jugador:JugadorEntity
+  usuario:UserEntity,
+  jugador:JugadorEntity
 }
 
 export interface CrearJugadorResponse{
-  Estado:number,
-  Mensaje:number,
-  Jugador:JugadorEntity
+  estado:number,
+  mensaje:number,
+  jugador:JugadorEntity
 }
 

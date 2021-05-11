@@ -5,6 +5,7 @@ import {JugadorEntity} from '../../shared/models/jugador.Entity';
 import { JugadorService } from 'src/app/services/jugador.service';
 import { Router } from '@angular/router';
 import { UserEntity } from 'src/app/shared/models/user.Entity';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-register-dialog',
@@ -29,6 +30,7 @@ export class RegisterDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<RegisterDialogComponent>,
     private jugadorService: JugadorService,
+    private loginService: LoginService,
     private router:Router
   ) { }
 
@@ -44,6 +46,7 @@ export class RegisterDialogComponent {
 
     this.jugadorService.create(jugador,user).subscribe(value=>{
       if(value.estado==0){
+        this.loginService.saveUser(jugador);
         this.router.navigateByUrl('user/userhome');
         this.dialogRef.close();
       }

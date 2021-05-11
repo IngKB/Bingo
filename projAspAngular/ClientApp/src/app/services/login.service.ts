@@ -15,12 +15,15 @@ export class LoginService {
   }
   token:string;
   login(user:UserEntity): Observable<LoginResponse> {
-    let body:LoginRequest = {Usuario:user};
+    let body:LoginRequest = {usuario:user};
     return this.http.post<LoginResponse>(baseUrl+'/api/Usuario/', body).pipe(tap(
       (res: LoginResponse) => {
         if (res) {
-          // guardar token
-          this.saveUser(res.jugador);
+          if(res.estado==0){
+            this.saveUser(res.jugador);
+          }else{
+            console.log(res);
+          }
         }
       })
     );
@@ -33,7 +36,7 @@ export class LoginService {
     localStorage.removeItem("Nombre");
   }
 
-  private saveUser(jugador: JugadorEntity): void {
+  saveUser(jugador: JugadorEntity): void {
     localStorage.setItem("Id", jugador.identificacion);
     localStorage.setItem("Nombre", jugador.primer_Nombre+" "+jugador.primer_Apellido);
   }
@@ -45,7 +48,7 @@ export class LoginService {
 }
 
 export interface LoginRequest{
-  Usuario:UserEntity
+  usuario:UserEntity
 }
 export interface LoginResponse{
   estado: number,

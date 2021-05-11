@@ -27,29 +27,37 @@ namespace Bingo.Application
         public LoginUsuarioResponse Ejecutar(LoginUsuarioRequest request)
         {
             try { 
-            var usuario = _usuarioRepository.FindFirstOrDefault(user => user.UserName == request.Usuario.UserName);
+            var usuario = _usuarioRepository.FindFirstOrDefault(user => user.UserName == request.usuario.UserName);
 
             if (usuario == null)
             {
                 return new LoginUsuarioResponse(1,"El nombre de usuario no existe", null);
             }
-            else if(usuario.Password != request.Usuario.Password)
+            else if(usuario.Password != request.usuario.Password)
             {
                 return new LoginUsuarioResponse(2,"La contraseña no coincide con el usuario", null);
             }
             else
             {
+                  Console.WriteLine(usuario.JugadorId);
                 Jugador jugador =_jugadorRepository.FindFirstOrDefault(jugador => jugador.Identificacion == usuario.JugadorId);
-                return new LoginUsuarioResponse(0, $"Bienvenido {usuario.UserName}",jugador);
+                    if(jugador != null)
+                    {
+                        return new LoginUsuarioResponse(0, $"Bienvenido {usuario.UserName}",jugador);
+                    }
+                    else
+                    {
+                        return new LoginUsuarioResponse(1, "Jugador no encontrado", jugador);
+                    }
             }
             }
             catch (Exception e)
             {
-                return new LoginUsuarioResponse(1, $"Error", null);
+                return new LoginUsuarioResponse(1, $"Error "+e.Message, null);
             }
         }
     }
 
-    public record LoginUsuarioResponse(int Estado, string Mensaje, Jugador Jugador );
-    public record LoginUsuarioRequest(Usuario Usuario);
+    public record LoginUsuarioResponse(int estado, string mensaje, Jugador jugador );
+    public record LoginUsuarioRequest(Usuario usuario);
 }

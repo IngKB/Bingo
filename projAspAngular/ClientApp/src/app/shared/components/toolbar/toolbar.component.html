@@ -1,16 +1,20 @@
-  <mat-toolbar>
-    <div class="filler"></div>
-    <div *ngIf="!logged">
-      <span class="letrasBlancas" (click)="openDialogRegister()"> Registrarse</span>
-      <button mat-raised-button (click)="openDialogLogin()">
-        Iniciar sesión
-      </button>
-    </div>
-    <div *ngIf="logged">
-      <span class="letrasBlancas" (click)="openDialogRegister()"> {{name}}</span>
-      <button class="userbutton" aria-label="logout button">
-        <mat-icon>person</mat-icon>
-      </button>
-    </div>
-
-  </mat-toolbar>
+<mat-toolbar>
+  <div class="filler"></div>
+  <div *ngIf="!logged">
+    <span class="letrasBlancas" (click)="openDialogRegister()">
+      Registrarse</span>
+    <button mat-raised-button (click)="openDialogLogin()">
+      Iniciar sesión
+    </button>
+  </div>
+  <div *ngIf="logged">
+    <button class="letrasBlancas" mat-button [matMenuTriggerFor]="menu">{{ name }}</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Perfil</button>
+      <button mat-menu-item (click)="logOut()">Cerrar sesion</button>
+    </mat-menu>
+    <button class="userbutton" aria-label="logout button">
+      <mat-icon>person</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

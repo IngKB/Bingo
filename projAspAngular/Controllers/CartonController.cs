@@ -16,25 +16,29 @@ namespace WebSocket.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICartonRepository _cartonRepository;
-        private readonly IEmailSender _mailServer;
+        private readonly IEventoBingoRepository _eventoBingoRepository;
+        private readonly IJugadorRepository _jugadorRepository;
         public CartonController
             (IUnitOfWork unitOfWork,
             ICartonRepository cuentaBancariaRepository,
-            IEmailSender mailServer)
+            IEventoBingoRepository eventoBingoRepository,
+            IJugadorRepository jugadorRepository
+            )
         {
 
             _unitOfWork = unitOfWork;
             _cartonRepository = cuentaBancariaRepository;
-            _mailServer = mailServer;
+            _eventoBingoRepository = eventoBingoRepository;
+            _jugadorRepository = jugadorRepository;
         }
 
 
 
-        [HttpGet]
-        public CrearCartonResponse CrearCarton()
+        [HttpPost]
+        public DefaultResponse CrearCarton(ComprarCartonRequest request)
         {
-            var service = new CrearCartonService();
-            var response = service.Ejecutar();
+            var service = new ComprarCartonService(_unitOfWork, _cartonRepository, _jugadorRepository, _eventoBingoRepository);
+            var response = service.Ejecutar(request);
             return response;
         }
     }
