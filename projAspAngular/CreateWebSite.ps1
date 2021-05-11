@@ -1,0 +1,1 @@
+﻿New-WebApplication -Site "Default Web Site" -Name Bingo -PhysicalPath c:\inetpub\wwwroot\bingo -Force
