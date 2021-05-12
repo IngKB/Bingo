@@ -1,25 +1,18 @@
 version: 0.2
-
 phases:
-    install:
-        runtime-versions:
-            dotnet: 3.1
-    pre_build:
-      commands:
-        - echo Restore started on 'date'
-        - dotnet restore Bingo.Domaain/Bingo.Domain.csproj
-        - dotnet restore Bing.Infraestructura/Bingo.Infraestructura.csproj
-        - dotnet restore Application/Bingo.Application.csproj
-        - dotnet restore Bingo.Application.Test/Bingo.Application.Test.csproj
-        - dotnet restore Bingo.Infraestructura.System/Bingo.Infraestructura.System.csproj
-        - dotnet restore projAspAngular/WebSocket.csproj
-    build:
-        commands:
-          - echo Build started on 'date'
-          - dotnet build -c Release -o ./build-output projAspAngular/WebSocket.csproj
-          - dotnet test -c Release Test/Bingo.Domain.Test.csproj
-          - dotnet test -c Release Bingo.Application.Test/Bingo.Application.Test.csproj
+  pre_build:
+    commands:
+      - echo Restore started on `date`
+      - pip install --upgrade awscli
+      - dotnet restore
+  build:
+    commands:
+      - echo Build started on `date`
+      - dotnet publish -c release -o ./build_output projAspAngular/WebSocket.csproj
+      - dotnet publish -c release -o ./test_output Bingo.Application.Test/Bingo.Application.Test.csproj
+
 artifacts:
   files:
-    - projAspAngular/build-output/**/*
+    - ./build_output/**/*
+    - scripts/**/*
     - appspec.yml
