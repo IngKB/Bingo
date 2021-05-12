@@ -7,7 +7,7 @@ phases:
     pre_build:
       commands:
         - echo Restore started on 'date'
-        - dotnet restore Bingo.Domaain/BingoDomain.csproj
+        - dotnet restore Bingo.Domaain/Bingo.Domain.csproj
         - dotnet restore Bing.Infraestructura/Bingo.Infraestructura.csproj
         - dotnet restore Application/Bingo.Application.csproj
         - dotnet restore Bingo.Application.Test/Bingo.Application.Test.csproj
