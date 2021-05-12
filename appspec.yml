@@ -9,25 +9,25 @@ files:
     destination: /etc/systemd/system/
 hooks:
   ApplicationStop:
-    - location: scripts/stop_service
+    - location: scripts/stop_service.sh
       timeout: 300
       runas: root
 
-  # BeforeInstall:
-  #   - location: scripts/remove_application
-  #     timeout: 300
-  #     runas: root
+  BeforeInstall:
+    - location: scripts/remove_application.sh
+      timeout: 300
+      runas: root
 
   AfterInstall:
-    - location: scripts/install_dotnetcore
+    - location: scripts/install_dotnetcore.sh
       timeout: 500
       runas: root
 
-    - location: scripts/install_httpd
+    - location: scripts/install_httpd.sh
       timeout: 300
       runas: root
 
   ApplicationStart:
-    - location: scripts/start_service
+    - location: scripts/start_service.sh
       timeout: 300
       runas: root
