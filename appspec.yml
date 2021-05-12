@@ -2,9 +2,15 @@
 os: windows
 files:
   - source: \
-    destination: C:\temp\WebApp\bingo
+    destination: C:\bingo
   
 hooks:
+  ApplicationStop:
+    - location: scripts\RemoveApp.ps1
+      timeout: 30
+  ApplicationStart:
+    - location: scripts\InstallApp.ps1
+      timeout: 300
   BeforeInstall:
-    - location: .\StageArtifact.ps1
-    - location: .\CreateWebSite.ps1
+    - location: scripts\StageArtifact.ps1
+    - location: scripts\CreateWebSite.ps1
