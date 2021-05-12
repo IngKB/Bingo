@@ -13,10 +13,10 @@ hooks:
       timeout: 300
       runas: root
 
-  BeforeInstall:
-    - location: scripts/remove_application
-      timeout: 300
-      runas: root
+  # BeforeInstall:
+  #   - location: scripts/remove_application
+  #     timeout: 300
+  #     runas: root
 
   AfterInstall:
     - location: scripts/install_dotnetcore
