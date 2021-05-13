@@ -16,3 +16,4 @@ artifacts:
     - ./AppSpec.yml
     - ./build_output/**/*
     - scripts/**/*
+  discard-paths: yes
