@@ -31,8 +31,6 @@ namespace WebSocket.Controllers
             _mailServer = mailServer;
         }
 
-
-
         [HttpPost]
         public CrearJugadorResponse CrearJugador(CrearJugadorRequest request)
         {
@@ -41,7 +39,7 @@ namespace WebSocket.Controllers
             return response;
         }
 
-        [HttpGet("/id/{id}")]
+        [HttpGet("id/{id}")]
         public ObtenerJugadorResponse ObtenerJugadorxId(string id)
         {
             var service = new ObtenerJugadorService(_unitOfWork, _mailServer, _JugadorRepository);
@@ -49,7 +47,7 @@ namespace WebSocket.Controllers
             return response;
         }
 
-        [HttpGet("/email/{email}")]
+        [HttpGet("email/{email}")]
         public ObtenerJugadorResponse ObtenerJugadorxEmail(string email)
         {
             var service = new ObtenerJugadorService(_unitOfWork, _mailServer, _JugadorRepository);
