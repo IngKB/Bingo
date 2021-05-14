@@ -1,5 +1,8 @@
 version: 0.2
 phases:
+  install:
+    runtime-versions:
+      dotnet: 5.0
   pre_build:
     commands:
       - echo Restore started on `date`
@@ -15,5 +18,5 @@ artifacts:
   files:
     # - ./appspec.yml
     - ./build_output/**/*
-    - scripts/**/*
+    # - scripts/**/*
   discard-paths: yes
