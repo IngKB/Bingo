@@ -39,7 +39,7 @@ namespace Bingo.Application.Test
 
             var response = _service.Ejecutar(new CrearEventoBingoRequest(partidas, DateTime.Now));
 
-            Assert.AreEqual($"Evento creaduo", response.mensaje);
+            Assert.AreEqual($"Evento creado", response.mensaje);
         }
     }
 }
