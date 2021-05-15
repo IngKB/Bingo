@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebSocket.Controllers
 {
-    [Route("/")]
+    [Route("/home")]
     [ApiController]
     public class HomeController : Controller
     {
