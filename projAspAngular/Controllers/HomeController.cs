@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace WebSocket.Controllers
 {
-    [Route("/home")]
+    [Route("[controller]")]
     [ApiController]
     public class HomeController : Controller
     {
         [HttpGet]
         public string Index()
         {
-            return "Trabajando";
+            return "Trabajando!!";
         }
     }
 }
