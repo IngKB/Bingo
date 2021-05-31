@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using projAspAngular.hubs;
 using System.Net;
+using WebSocket.HubConfig;
 
 namespace projAspAngular
 {
@@ -40,6 +41,8 @@ namespace projAspAngular
             services.AddScoped<IEmailSender, SendgridSender>(); //Crear Instancia por peticion
             services.AddScoped<IJugadorRepository, JugadorRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IEventoBingoRepository, EventoBingoRepository>();
+
 
 
             services.AddCors(options =>
@@ -95,6 +98,8 @@ namespace projAspAngular
                     pattern: "{controller}/{action=Index}/{id?}");
                 //endpoints.MapControllers();
                 endpoints.MapHub<ChatHub>("/chat");
+                endpoints.MapHub<PartidaHub>("/partida_jugando");
+
             });
 
         }
