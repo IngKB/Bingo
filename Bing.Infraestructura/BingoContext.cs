@@ -37,10 +37,11 @@ namespace Bingo.Infraestructura
                  p => p.Casillas, a =>
                  {
                      a.WithOwner().HasForeignKey("CartonId");
-                     a.Property<int>("Id").ValueGeneratedOnAdd();
                      a.HasKey("Id");
+                     a.Property<int>("Id").ValueGeneratedOnAdd();
                      a.OwnsOne(c => c.coordenada);
                  });
+
             modelBuilder.Entity<Jugador>().HasKey(j => j.Identificacion);
 
             modelBuilder.Entity<EventoBingo>()

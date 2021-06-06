@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WebSocket.Migrations
 {
     [DbContext(typeof(BingoContext))]
-    [Migration("20210506185939_initial")]
-    partial class initial
+    [Migration("20210606042122_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

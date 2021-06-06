@@ -34,7 +34,9 @@ namespace Bingo.Application.Test
             _service = new ComprarCartonService(new UnitOfWork(_context),new CartonRepository(_context),new JugadorRepository(_context), new EventoBingoRepository(_context));
 
             Carton carton = new Carton(evento.Id, jugador.Identificacion);
+            carton.CrearCarton();
             var response = _service.Ejecutar(new ComprarCartonRequest(carton));
+
             Assert.AreEqual(0, response.estado);
         }
     }

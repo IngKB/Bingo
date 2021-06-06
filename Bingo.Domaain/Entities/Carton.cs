@@ -8,13 +8,12 @@ namespace Bingo.Domain.Entities
     public class Carton : Entity<int>, IAggregateRoot
     {
         public int EventoId { get;private set;}
-        public List<Casilla> Casillas { get; private set; }
+        public List<Casilla> Casillas { get; set; }
         public string JugadorId { get; private set; }
         public Carton(int eventoId, string jugadorId)
         {
             EventoId = eventoId;
             JugadorId = jugadorId;
-            CrearCarton();
         }
 
 

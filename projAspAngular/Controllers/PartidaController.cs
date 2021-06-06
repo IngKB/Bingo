@@ -25,7 +25,17 @@ namespace WebSocket.Controllers
         {
             _hub.Clients.All.SendAsync("numeromarcado", numeros);
             return Ok(new { Message = "Request Completed" });
+        } 
+
+        [HttpPost]
+        public IActionResult MarcarNumero(MarcarNumeroRequest request)
+        {
+            numeros = numeros.Append(request.numero);
+            _hub.Clients.All.SendAsync("numeromarcado", numeros);
+            return Ok(new { Message = "Llego el numero" });
         }
 
     }
+
+    public record MarcarNumeroRequest(int numero);
 }

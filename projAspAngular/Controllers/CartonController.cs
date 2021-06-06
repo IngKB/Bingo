@@ -1,4 +1,5 @@
 ﻿using Bingo.Application;
+using Bingo.Application.CartonServices;
 using Bingo.Domain.Contracts;
 using Bingo.Domain.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -35,10 +36,18 @@ namespace WebSocket.Controllers
 
 
         [HttpPost]
-        public DefaultResponse CrearCarton(ComprarCartonRequest request)
+        public DefaultResponse ComprarCarton(ComprarCartonRequest request)
         {
             var service = new ComprarCartonService(_unitOfWork, _cartonRepository, _jugadorRepository, _eventoBingoRepository);
             var response = service.Ejecutar(request);
+            return response;
+        }
+
+        [HttpGet("jugador/{id}")]
+        public ObtenerCartonResponse ObtenerCarton( string id)
+        {
+            var service = new ObtenerCartonService(_unitOfWork, _cartonRepository, _jugadorRepository);
+            var response = service.Ejecutar(id);
             return response;
         }
     }

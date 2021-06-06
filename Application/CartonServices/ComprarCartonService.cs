@@ -1,6 +1,7 @@
 ﻿using Bingo.Domain.Contracts;
 using Bingo.Domain.Entities;
 using Bingo.Domain.Repositories;
+using Bingo.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,14 +34,15 @@ namespace Bingo.Application
         {
             var jugador = _jugadorRepository.FindFirstOrDefault(jugador => jugador.Identificacion == request.Carton.JugadorId);
             var evento = _eventoRepository.FindFirstOrDefault(evento => evento.Id == request.Carton.EventoId);
-            if(jugador!=null && evento != null)
+
+            if (jugador != null && evento != null && request.Carton.Casillas != null)
             {
                 _cartonRepository.Add(request.Carton);
                 _unitOfWork.Commit();
-                return new DefaultResponse(0, $"Carton comprado");
+                return new DefaultResponse(0, "Carton comprado");
             }
 
-            return new DefaultResponse(1, "Carton vacio");
+            return new DefaultResponse(1, "Carton vacio " + request.Carton.JugadorId + " " + request.Carton.EventoId);
         }
     }
 

@@ -4,7 +4,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace WebSocket.Migrations
 {
-    public partial class initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -75,7 +75,8 @@ namespace WebSocket.Migrations
                 name: "Casilla",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                    .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Numero = table.Column<int>(type: "int", nullable: false),
                     Marcado = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     coordenada_posX = table.Column<int>(type: "int", nullable: true),

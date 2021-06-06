@@ -1,4 +1,5 @@
 ﻿using Bingo.Application;
+using Bingo.Application.EventoServices;
 using Bingo.Domain.Contracts;
 using Bingo.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -23,10 +24,18 @@ namespace WebSocket.Controllers
         }
 
         [HttpPost]
-        public DefaultResponse CrearJugador(CrearEventoBingoRequest request)
+        public DefaultResponse CrearEvento(CrearEventoBingoRequest request)
         {
             var service = new CrearEventoBingoService(_unitOfWork, _eventoRepository);
             var response = service.Ejecutar(request);
+            return response;
+        }
+
+        [HttpGet]
+        public ObtenerUltimoEventoResponse ObtenerEvento()
+        {
+            var service = new ObtenerUltimoEventoService(_unitOfWork, _eventoRepository);
+            var response = service.Ejecutar();
             return response;
         }
     }
