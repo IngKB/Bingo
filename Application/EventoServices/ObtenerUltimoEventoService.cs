@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using Bingo.Domain.Contracts;
 using Bingo.Domain.Entities;
 using Bingo.Domain.Repositories;
-using System;
-using System.Collections.Generic;
 
 namespace Bingo.Application.EventoServices
 {

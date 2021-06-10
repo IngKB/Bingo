@@ -41,8 +41,7 @@ namespace Bingo.Application
                 _unitOfWork.Commit();
                 return new DefaultResponse(0, "Carton comprado");
             }
-
-            return new DefaultResponse(1, "Carton vacio " + request.Carton.JugadorId + " " + request.Carton.EventoId);
+            return new DefaultResponse(1, "Error al comprar ");
         }
     }
 
