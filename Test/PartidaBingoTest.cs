@@ -1,5 +1,6 @@
 using Bingo.Domain;
 using Bingo.Domain.Entities;
+using Bingo.Infraestructura.ObjectMother;
 using NUnit.Framework;
 using System.Collections.Generic;
 
@@ -38,7 +39,7 @@ namespace Bingo.Domain.Test
 
             for (int i = 0; i < 20; i++)
             {
-                cartones.Add(new Carton(1,"001"));
+                cartones.Add(CartonMother.CrearCarton(i,"001"));
             }
             var partidaBingo = new PartidaBingo("X");
             partidaBingo.AgregarCartones(cartones);

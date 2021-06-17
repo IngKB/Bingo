@@ -94,46 +94,6 @@ namespace Bingo.Domain.Entities
             return -1;
         }
 
-        public void CrearCarton()
-        {
-            Casillas = new List<Casilla>();
-            for(int i = 0; i < 25; i++)
-            {
-                Casillas.Add(new Casilla());
-            }
-            var rand = new Random();
-            var minVal = 1;
-            var maxVal = 16;
-            var cont = 0;
-            for (int i = 0; i<5;i++)
-            {
-                for(int j = 0; j < 5; j++)
-                {
-                    if (!(i == 2 && j == 2))
-                    {
-                        var num = rand.Next(minVal, maxVal);
-
-                        while (EstaElNumeroEnCarton(num)!=-1)
-                        {
-                            num = rand.Next(minVal, maxVal);
-                        }
-
-                        Casillas[cont].Numero = num;
-                    }
-                    else {
-                        Casillas[cont].Marcado = true;
-                        Casillas[cont].Numero = 0;
-                    }
-
-                    Casillas[cont].coordenada = new Coordenada(i, j);
-                    cont++;
-                }
-                
-                minVal += 15;
-                maxVal += 15;
-            }  
-        }
-
         private int EstaElNumeroEnCarton(int num)
         {
             

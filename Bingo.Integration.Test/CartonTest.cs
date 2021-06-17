@@ -27,10 +27,10 @@ namespace Bingo.Integration.Test
         [Fact]
         public async Task PuedeComprarCartonTestAsync()
         {
-            Carton carton = new Carton(1, "0001");
-            carton.CrearCarton();
+            Carton carton = CartonMother.CrearCarton(1, "0001");
+            
             var request = new ComprarCartonRequest(carton);
-
+            
             var jsonObject = JsonConvert.SerializeObject(request);
             var content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
             var httpClient = _factory.CreateClient();
@@ -43,8 +43,7 @@ namespace Bingo.Integration.Test
             responseHttp.StatusCode.Should().Be(HttpStatusCode.OK);
             var respuesta = await responseHttp.Content.ReadAsStringAsync();
             respuesta.Should().Contain($"Carton comprado");
-            var carton001 = context.Cartones.FirstOrDefault(t => t.JugadorId == "0001");
-            carton001.Should().NotBeNull();
+            
         }
     }
 }
