@@ -48,6 +48,7 @@ namespace BIngo.Frontend.Test
         [Test]
         public void RegistrarUsuario()
         {
+            // pruebas 
             IWebElement login = driver.FindElement(By.Id("btnRegistrarse"));
             login.Click();
             IWebElement txtIdentificacion = driver.FindElement(By.Id("iptIdentificacion"));
