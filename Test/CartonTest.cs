@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Bingo.Domain.Entities;
+using Bingo.Infraestructura.ObjectMother;
 using NUnit.Framework;
 
 namespace Bingo.Domain.Test
@@ -13,7 +14,7 @@ namespace Bingo.Domain.Test
         public void VerificarVictoriaConCartonLleno()
         {
             //Arrange
-            Carton carton = new(1,"001");
+            Carton carton = CartonMother.CrearCarton(1,"01");
             string respuesta ="";
             //Act
             for (int i = 0; i < 75; i++)
@@ -34,7 +35,7 @@ namespace Bingo.Domain.Test
         public string VerificarVictoriaConFigura(string figura)
         {
             //Arange
-            Carton carton = new Carton(1,"001");
+            Carton carton = CartonMother.CrearCarton(1, "01");
             string respuesta = "";
 
             //Act

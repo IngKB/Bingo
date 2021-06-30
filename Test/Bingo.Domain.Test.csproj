@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Bing.Infraestructura\Bingo.Infraestructura.csproj" />
     <ProjectReference Include="..\Bingo.Domaain\Bingo.Domain.csproj" />
   </ItemGroup>
 
